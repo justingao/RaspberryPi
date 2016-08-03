@@ -1,0 +1,29 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		aria2
+# Required-Start:	$remote_fs $syslog
+# Required-Stop:	$remote_fs $syslog
+# Default-Start:	2 3 4 5
+# Default-Stop:		
+# Short-Description:	Aria2
+### END INIT INFO
+
+
+RETVAL=0
+
+case "$1" in
+    start)
+        echo "Starting service Aria2..."
+        aria2c --conf-path=/etc/aria2.conf -D
+        echo "Start service done."
+    ;;
+    stop)
+        echo "Stoping service Aria2..."
+        killall aria2c
+        echo "Stop service done."
+    ;;
+esac
+
+exit $RETVAL
+
